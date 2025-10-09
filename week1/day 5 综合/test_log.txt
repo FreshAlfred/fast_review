@@ -1,5 +1,5 @@
 [INFO] Test started
-[ERROR] Connection failed...
+[ERROR] Connection failed
 [WARNING] Timeout occurred
 [INFO] Retrying
 [OK] Test passed

@@ -1,0 +1,13 @@
+{
+    "name": "Alice",
+    "age": 25,
+    "skills": ["Python", "Testing", "AI"],
+    "details": {
+        "city": "Shanghai",
+        "verified": true,
+        "hobby": {
+            "sports": "Basketball",
+            "reading": "Books"
+        }
+    }
+}
