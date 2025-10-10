@@ -55,15 +55,49 @@ from pathlib import Path
 考虑嵌套和异常
 '''
 
+# import json
+# from pathlib import Path
+
+# base_path = Path(__file__).parent
+# json_path = base_path / 'list.json'
+
+# def count_fields(obj):
+#     if isinstance(obj, dict):
+#         return len(obj) + sum(count_fields(v) for v in obj.values())
+#     elif isinstance(obj, list):
+#         return sum(count_fields(item) for item in obj)
+#     return 0
+
+# def load_json(file_path):
+#     try:
+#         path = Path(file_path)
+#         if not path.exists():
+#             raise FileNotFoundError(f"文件不存在: {file_path}")
+#         with path.open(encoding='utf-8') as f:
+#             return json.load(f)
+#     except json.JSONDecodeError as e:
+#         print(f"JSON 格式错误: {e}")
+#         return None
+#     except Exception as e:
+#         print(f"未知错误: {e}")
+#         return None
+
+# data = load_json(json_path)
+# if data:
+#     print(f"总字段数量: {count_fields(data)}")
+
+
+'''
+明天自己写一遍！！
+'''
+
 import json
 from pathlib import Path
 
-base_path = Path(__file__).parent
-json_path = base_path / 'list.json'
-
+json_path = Path(__file__).parent / "test.json"
 def count_fields(obj):
     if isinstance(obj, dict):
-        return len(obj) + sum(count_fields(v) for v in obj.values())
+        return len(obj) + sum(count_fields(v)  for v in obj.values())
     elif isinstance(obj, list):
         return sum(count_fields(item) for item in obj)
     return 0
@@ -72,22 +106,14 @@ def load_json(file_path):
     try:
         path = Path(file_path)
         if not path.exists():
-            raise FileNotFoundError(f"文件不存在: {file_path}")
+            raise FileNotFoundError(f"文件不存在： {file_path}")
         with path.open(encoding='utf-8') as f:
             return json.load(f)
     except json.JSONDecodeError as e:
-        print(f"JSON 格式错误: {e}")
+        print(f"JSON解析失败: {e}")
         return None
     except Exception as e:
-        print(f"未知错误: {e}")
-        return None
-
+        print(f"其他异常：{e}")
 data = load_json(json_path)
 if data:
     print(f"总字段数量: {count_fields(data)}")
-
-
-'''
-明天自己写一遍！！
-'''
-

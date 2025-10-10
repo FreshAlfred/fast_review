@@ -35,7 +35,19 @@ def count_log_levels(log_file_path):
     }
     
     # TODO: 读取文件并统计各类日志
-
+    try:
+        path = Path(log_file_path)
+        if not path.exists():
+            raise FileNotFoundError(f"文件不存在: {log_file_path}")
+        with path.open(encoding='utf-8') as f:
+            content = f.read()
+            log_counts['INFO'] = content.count('INFO')
+            log_counts['ERROR'] = content.count('ERROR')
+            log_counts['WARNING'] = content.count('WARNING')
+            log_counts['OK'] = content.count('OK')
+    except Exception as e:
+        print(f"文件异常 {e}")
+        return None
     
     return log_counts
 
@@ -60,7 +72,9 @@ def main():
     
     # TODO: 写入结果到文件
     
-    pass
+    log_file_path = Path(__file__).parent / "test_log.txt"
+    print(count_log_levels(log_file_path))
 
 if __name__ == "__main__":
     main()
+
