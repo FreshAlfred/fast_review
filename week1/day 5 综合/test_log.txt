@@ -3,3 +3,4 @@
 [WARNING] Timeout occurred
 [INFO] Retrying
 [OK] Test passed
+OK: TEST
